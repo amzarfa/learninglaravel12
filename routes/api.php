@@ -12,6 +12,7 @@ Route::middleware('auth:sanctum')->name('api.')->group(function () {
         return $request->user();
     })->name('user');
 
+    Route::apiResource('usermanagement', PegawaiController::class);
     Route::apiResource('pegawai', PegawaiController::class);
     Route::apiResource('mahasiswa', MahasiswaController::class);
 });

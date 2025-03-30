@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -12,7 +13,12 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        //
+        $data = Mahasiswa::get();
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Data retrieved successfully',
+            'data'    => $data,
+        ], 200);
     }
 
     /**
