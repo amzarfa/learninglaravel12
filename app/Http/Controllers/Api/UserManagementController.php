@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserManagementController extends Controller
 {
@@ -12,7 +15,13 @@ class UserManagementController extends Controller
      */
     public function index()
     {
-        //
+        $auth = Auth::user();
+        $data = User::where('id', '!=', $auth->id)->get();
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Data retrieved successfully',
+            'data'    => $data,
+        ], 200);
     }
 
     /**
@@ -28,7 +37,15 @@ class UserManagementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create([
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'password' => Hash::make('password'),
+        ]);
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Data Berhasil Ditambahkan',
+        ], 200);
     }
 
     /**
@@ -36,7 +53,12 @@ class UserManagementController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = User::where('id', $id)->first();
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Data retrieved successfully',
+            'data'    => $data,
+        ], 200);
     }
 
     /**
@@ -44,7 +66,12 @@ class UserManagementController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = User::where('id', $id)->first();
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Data retrieved successfully',
+            'data'    => $data,
+        ], 200);
     }
 
     /**
@@ -52,7 +79,14 @@ class UserManagementController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        User::where('id', $id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Data Berhasil Diubah',
+        ], 200);
     }
 
     /**
@@ -60,6 +94,10 @@ class UserManagementController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        User::where('id', $id)->delete();
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Data Berhasil Dihapus',
+        ], 200);
     }
 }

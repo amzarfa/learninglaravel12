@@ -36,7 +36,17 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data = Pegawai::create([
+            'name'     => $request->name,
+            'nip'    => $request->nip,
+            'jabatan'    => $request->jabatan,
+        ]);
+        // return $data;
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Data berhasil ditambahkan',
+        ], 200);
     }
 
     /**
@@ -44,7 +54,12 @@ class PegawaiController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Pegawai::where('id', $id)->first();
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Data berhasil ditemukan',
+            'data' => $data,
+        ], 200);
     }
 
     /**
@@ -60,7 +75,17 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = Pegawai::where('id', $id)->update([
+            'name' => $request->name,
+            'nip' => $request->nip,
+            'jabatan' => $request->jabatan,
+        ]);
+
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Data berhasil diubah',
+            'data' => $data,
+        ], 200);
     }
 
     /**
@@ -68,6 +93,10 @@ class PegawaiController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Pegawai::where('id', $id)->delete();
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Data berhasil dihapus',
+        ], 200);
     }
 }

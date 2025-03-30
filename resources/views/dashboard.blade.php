@@ -28,6 +28,7 @@
                         </p>
                     </div>
                 </a>
+                <br>
                 <!-- Card User Management -->
                 <a href="/usermanagement"
                     class="block bg-white overflow-hidden shadow-sm sm:rounded-lg hover:bg-gray-100">
