@@ -3,24 +3,16 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Pegawai;
 use Illuminate\Http\Request;
 
-use function Pest\Laravel\json;
-
-class PegawaiController extends Controller
+class UserManagementController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = Pegawai::get();
-        return response()->json([
-            'status'  => 'success',
-            'message' => 'Data retrieved successfully',
-            'data'    => $data,
-        ], 200);
+        //
     }
 
     /**

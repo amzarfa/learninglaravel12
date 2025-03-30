@@ -22,6 +22,9 @@
                     <x-nav-link :href="route('mahasiswa.index')" :active="request()->routeIs('mahasiswa.index')">
                         {{ __('Mahasiswa') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('usermanagement.index')" :active="request()->routeIs('usermanagement.index')">
+                        {{ __('User Management') }}
+                    </x-nav-link>
                 </div>
             </div>
 

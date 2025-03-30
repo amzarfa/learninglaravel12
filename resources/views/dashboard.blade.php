@@ -28,6 +28,16 @@
                         </p>
                     </div>
                 </a>
+                <!-- Card User Management -->
+                <a href="/usermanagement"
+                    class="block bg-white overflow-hidden shadow-sm sm:rounded-lg hover:bg-gray-100">
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg text-gray-900">User Management</h3>
+                        <p class="mt-2 text-sm text-gray-600">
+                            Klik untuk melihat data User.
+                        </p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

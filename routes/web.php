@@ -3,6 +3,7 @@
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserManagementController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,12 +20,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Route::resource('/pegawai', PegawaiController::class)->middleware(['auth', 'verified']);
-// Route::resource('/mahasiswa', MahasiswaController::class)->middleware(['auth', 'verified']);
-
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::resource('/pegawai', PegawaiController::class);
-    Route::resource('/mahasiswa', MahasiswaController::class);
+    Route::resource('pegawai', PegawaiController::class);
+    Route::resource('mahasiswa', MahasiswaController::class);
+    Route::resource('usermanagement', UserManagementController::class);
 });
 
 require __DIR__ . '/auth.php';
