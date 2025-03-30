@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\MahasiswaController;
 use App\Http\Controllers\Api\PegawaiController;
+use App\Http\Controllers\Api\UserManagementController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -12,7 +13,7 @@ Route::middleware('auth:sanctum')->name('api.')->group(function () {
         return $request->user();
     })->name('user');
 
-    Route::apiResource('usermanagement', PegawaiController::class);
+    Route::apiResource('usermanagement', UserManagementController::class);
     Route::apiResource('pegawai', PegawaiController::class);
     Route::apiResource('mahasiswa', MahasiswaController::class);
 });
